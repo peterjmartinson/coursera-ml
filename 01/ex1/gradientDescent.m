@@ -19,25 +19,14 @@ for iter = 1:num_iters
 
     m = size(X,1);
     predictions = X*theta;
-    sizem = size(m);
-    sizeX = size(X);
-    sizey = size(y);
-    sizet = size(theta);
-    sizep = size(predictions);
-    fprintf('m: %d,%d\n', sizem[1], sizem[2]);
-    fprintf('X: %d,%d\n', sizeX[1], sizeX[2]);
-    fprintf('y: %d,%d\n', sizey[1], sizey[2]);
-    fprintf('theta: %d,%d\n', sizet[1], sizet[2]);
-    fprintf('predictions: %d,%d\n', sizep[1], sizep[2]);
-    sqrErrors = (predictions-y)*X;
-    temp = 1/m * sum(sqrErrors);
-    theta = temp;
-
-
-
-
-
-
+    sqrErrors_1 = (predictions-y)*X(1);
+    sqrErrors_2 = (predictions-y)*X(2);
+    temp_1 = theta(1) - alpha * (1/m * sum(sqrErrors_1));
+    temp_2 = theta(2) - alpha * (1/m * sum(sqrErrors_2));
+    theta(1) = temp_1;
+    theta(2) = temp_2;
+    fprintf('theta: (%d, %d)\n', theta(1), theta(2));
+    fprintf('J: %d\n', computeCost(X, y, theta));
 
     % ============================================================
 
