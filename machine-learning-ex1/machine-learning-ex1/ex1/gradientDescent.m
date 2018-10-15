@@ -17,21 +17,13 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    m = size(X,1);
-    predictions = X*theta;
-    sqrErrors = (predictions-y).*X;
-    temp = 1/m * sum(sqrErrors);
-    sizet = size(theta);
-    sizetemp = size(temp);
-    fprintf('theta: %d,%d\n', sizet(1), sizet(2));
-    fprintf('temp: %d,%d\n', sizetemp(1), sizetemp(2));
-    theta = temp;
-
-
-
-
-
-
+    h = X * theta;
+    % fprintf('m: %d, alpha: %d, h: %d\n\n', m, alpha, h);
+    % fprintf('J: %d\n', computeCost(X, y, theta));
+    % pause;
+    temp_theta_1 = theta(1) - alpha * (1/m) * sum( X(:,1)' * (h - y) );
+    temp_theta_2 = theta(2) - alpha * (1/m) * sum( X(:,2)' * (h - y) );
+    theta = [temp_theta_1; temp_theta_2];
 
     % ============================================================
 
