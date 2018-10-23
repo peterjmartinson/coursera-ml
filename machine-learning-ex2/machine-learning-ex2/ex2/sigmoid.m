@@ -14,7 +14,7 @@ rows = size(z)(1);
 columns = size(z)(2);
 for i = 1:rows
   for j = 1:columns
-    g(i,j) = 1 / (1 + exp(-z(i,j)))
+    g(i,j) = 1 / (1 + exp(-z(i,j)));
   end
 end
 
